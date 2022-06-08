@@ -11,7 +11,6 @@ import wolframalpha
 import json
 import requests
 
-
 print('Loading Your AI Personal Assistant - G One')
 
 engine=pyttsx3.init('sapi5')
@@ -40,11 +39,9 @@ def takeCommand():
     with sr.Microphone() as source:
         print("Listening...")
         audio=r.listen(source)
-
         try:
             statement=r.recognize_google(audio,language='en-in')
             print(f"user said:{statement}\n")
-
         except Exception as e:
             speak("Pardon me, Please say that again")
             return "None"
@@ -55,8 +52,6 @@ wishMe()
 
 
 if __name__=='__main__':
-
-
     while True:
         speak("Tell me how can I help you now?")
         statement = takeCommand().lower()
@@ -123,8 +118,6 @@ if __name__=='__main__':
             else:
                 speak(" City Not Found ")
 
-
-
         elif 'time' in statement:
             strTime=datetime.datetime.now().strftime("%H:%M:%S")
             speak(f"the time is {strTime}")
@@ -133,7 +126,6 @@ if __name__=='__main__':
             speak('I am G-one version 2 point O your persoanl assistant. I am programmed to minor tasks like'
                   'opening youtube,google chrome,gmail and stackoverflow ,predict time,take a photo,search wikipedia,predict weather' 
                   'in different cities , get top headline news from times of india and you can ask me computational or geographical questions too!')
-
 
         elif "who made you" in statement or "who created you" in statement or "who discovered you" in statement:
             speak("I was built by Sneh")
@@ -159,25 +151,18 @@ if __name__=='__main__':
         elif 'ask' in statement:
             speak('I can answer to computational and geographical questions and what question do you want to ask now')
             question=takeCommand()
-            app_id="R2K75H-7ELALHR35X"
-            client = wolframalpha.Client('R2K75H-7ELALHR35X')
+            app_id="WVHQRL-TK5WKRKPEY"
+            client = wolframalpha.Client('WVHQRL-TK5WKRKPEY')
             res = client.query(question)
             answer = next(res.results).text
             speak(answer)
             print(answer)
-
 
         elif "log off" in statement or "sign out" in statement:
             speak("Ok , your pc will log off in 10 sec make sure you exit from all applications")
             subprocess.call(["shutdown", "/l"])
 
 time.sleep(3)
-
-
-
-
-
-
 
 
 
